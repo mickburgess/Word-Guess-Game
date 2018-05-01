@@ -27,15 +27,16 @@ var remainingLetters = nextWord.length;
   
   // Determines which key was pressed
   document.onkeyup = function (event) {
-    var userGuess = event.key.toUpperCase();
+    var userGuess = event.key.toLowerCase();
     console.log(userGuess);
-
+    guessTotal--;
+    console.log(guessTotal);
     // Add guesses to an array
     guessLetters.push(userGuess);
 
     // Checks if guess is in nextWord and if it is then add it to our answer and subtract from the remaining letters to guess
     for (var j = 0; j < nextWord.length; j++) {
-      if (nextWord[j] === userGuess) {
+      if (nextWord[j].toLowerCase() === userGuess) {
         answerArray[j] = userGuess;
         remainingLetters--;
       }
