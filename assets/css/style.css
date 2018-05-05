@@ -1,9 +1,13 @@
 body {
   background-image: url(../images/69718387-diablo-wallpapers.jpg);
   font-family: 'Skranji', cursive, sans-serif;
-  height: 100vh;
   color: #ffffff;
   font-weight: bold;
+  font-size: 1.2em;
+}
+
+footer {
+  background-color: #E3170D
 }
 
 #hangman {
@@ -19,10 +23,35 @@ body {
   font-family: 'Skranji', cursive;
   color: rgb(159, 161, 23);
   font-size: 6em;
-  text-align: center;
 }
 
-.row { 
-  height: 500px;
+.game {
   border: dashed darkred 2px;
+}
+
+.pic {
+  border: dashed darkred;
+  border-width: 2px 0px 2px 2px;
+}
+
+.wrapper {
+  min-height: calc(100vh - 80px);
+}
+
+@media (max-width: 576px) { 
+  #diablo {
+    font-size: 3em;
+  }
+
+  #hangman {
+    font-size: 3em;
+    height: 50px;
+    line-height: 50px;
+  }
+}
+
+@media (max-width: 320px) {
+  #hangman {
+    font-size: 2.7em;
+  }
 }
