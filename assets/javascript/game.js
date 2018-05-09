@@ -7,16 +7,6 @@ $(document).ready(function() {
 // Array of words to be used for hangman
 var wordBank = ["DIABLO", "NEPHALEM", "BARBARIAN", "AMAZON", "ANDARIEL", "MEPHISTO", "CRUSADER", "PALADIN", "ASSASSIN", "DRUID", "CAIN", "MITIGATION", "HORADRIM"]
 
-// Used at before game begins
-var messageBlock = "PRESS ANY KEY TO GET STARTED!";
-document.getElementById("start").innerText = messageBlock;
-
-// initialize game
-function initializeGame () {
-  document.getElementById("start").innerText = messageBlock;
-  
-}
-
 // Win tally
 var wins = 0;
 document.getElementById("win-total").innerText = wins;
@@ -28,6 +18,10 @@ var guessLetterArray = [];
 // var remainingLetters = currentWord.length;
 
 function setCurrentWord() { 
+  // Used at before game begins
+  var messageBlock = "PRESS ANY KEY TO GET STARTED!";
+  document.getElementById("start").innerText = messageBlock;
+
   // Get a random word from the wordBank array
   var currentWord = wordBank[Math.floor(Math.random() * wordBank.length)];
   console.log(currentWord);
