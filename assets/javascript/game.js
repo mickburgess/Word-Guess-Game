@@ -34,7 +34,7 @@ function setCurrentWord() {
   document.getElementById("current-word").innerText = answerString;
   
   // Sets the number of total guesses you have
-  var guessTotal = currentWord.length + 5;
+  var guessTotal = currentWord.length + 3;
   document.querySelector("#guess-remaining").innerText = guessTotal;
 
   // Holds the letters already guessed
@@ -74,8 +74,6 @@ function setCurrentWord() {
             // console.log(answerArray);
             answerString = answerArray.join(" ");
             document.getElementById("current-word").innerHTML = answerString;
-           
-           
           }   
         }
         
@@ -96,7 +94,10 @@ function setCurrentWord() {
         if (counter == currentWord.length) {
           wins++;
           document.getElementById("win-total").innerText = wins;
-
+          setCurrentWord();
+          guessLetterArray.length = 0;
+          guessLetter = guessLetterArray.join(" ");
+          document.getElementById("guess-letters").innerText = guessLetter;
           console.log("success");
         }
       }
