@@ -46,8 +46,10 @@ function setCurrentWord() {
 
   function keyPress() {
     // Determines which key was pressed
-    document.onkeyup = function (event) {
+    document.onkeypress = function (event) {
       var userGuess = event.key.toUpperCase();
+      if (userGuess >= "A" && userGuess <= "Z") {
+      
       document.getElementById("start").innerText = " ";
       if (guessLetterArray.includes(userGuess)) {
         duplicateResponse();
@@ -104,6 +106,7 @@ function setCurrentWord() {
           document.getElementById("guess-letters").innerText = guessLetter;
         }
       }
+    }
   }
   keyPress();
 }
