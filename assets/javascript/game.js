@@ -11,6 +11,10 @@ var wordBank = ["DIABLO", "NEPHALEM", "BARBARIAN", "AMAZON", "ANDARIEL", "MEPHIS
 var wins = 0;
 document.getElementById("win-total").innerText = wins;
 
+// Lose tally
+var losses = 0;
+document.getElementById("loss-total").innerText = losses;
+
 // The number of letters remaining that are unguessed
 // var remainingLetters = currentWord.length;
 
@@ -39,7 +43,6 @@ function setCurrentWord() {
 
   // Holds the letters already guessed
   var guessLetterArray = [];
-  console.log("guess", guessLetterArray);
 
   function keyPress() {
     // Determines which key was pressed
@@ -51,13 +54,10 @@ function setCurrentWord() {
       }
       else {
         guessLetterArray.push(userGuess);
-        console.log("guess2", guessLetterArray);
         guessLetter = guessLetterArray.join(" ");
-        console.log("guess3", guessLetter);
         document.getElementById("guess-letters").innerText = guessLetter;
         guessTotal--;
         document.getElementById("guess-remaining").innerText = guessTotal;
-        console.log(guessTotal);
       }
       
       function duplicateResponse() {
@@ -70,8 +70,6 @@ function setCurrentWord() {
         for (var j = 0; j < currentWord.length; j++) {
           if (currentSplit[j] === userGuess) {
             answerArray[j] = userGuess;
-            // console.log("remaining", remainingLetters);
-            // console.log(answerArray);
             answerString = answerArray.join(" ");
             document.getElementById("current-word").innerHTML = answerString;
           }   
@@ -82,8 +80,6 @@ function setCurrentWord() {
     
       function winChecker () {
         var answerSplit = currentWord.split("");
-        console.log("winChecker", answerSplit);
-        console.log("answer", answerArray);
         var counter = 0;
         for (var k =0; k < currentWord.length; k++) {
           // console.log( answerSplit[k]);
@@ -98,7 +94,14 @@ function setCurrentWord() {
           guessLetterArray.length = 0;
           guessLetter = guessLetterArray.join(" ");
           document.getElementById("guess-letters").innerText = guessLetter;
-          console.log("success");
+        }
+        if (guessTotal < 1) {
+          losses++;
+          document.getElementById("loss-total").innerText = losses;
+          setCurrentWord();
+          guessLetterArray.length = 0;
+          guessLetter = guessLetterArray.join(" ");
+          document.getElementById("guess-letters").innerText = guessLetter;
         }
       }
   }
